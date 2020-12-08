@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("In ms per second")] [SerializeField] float speed = 20f;
     [Tooltip("In m")][Range(1,40)] [SerializeField] float xClamp;
     [Tooltip("In m")] [Range(1, 40)] [SerializeField] float yClamp;
+    [SerializeField] GameObject[] guns;
 
 
     [Header("ScreenPosition Based")]
@@ -37,21 +38,50 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMovementHandler(restrictMovement);
+        if (!restrictMovement) {
+            PlayerMovemment();
+            PlayerRotation();
+            PlayerAttack();
+
+        }
+
 
 
 
     }
 
-    void PlayerMovementHandler(bool restricted)
+    private void PlayerAttack()
     {
-        restrictMovement = restricted;
-        if (!restricted) {
-
-            PlayerMovemment();
-            PlayerRotation();
-
+        if (CrossPlatformInputManager.GetButton("Fire"))
+        {
+            ActivateGuns();
         }
+        else
+        {
+            DeactivateGuns();
+        }
+    }
+
+    private void DeactivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(false);
+        }
+    }
+
+    private void ActivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(true);
+        }
+    }
+
+    void PlayerMovementHandler()
+    {
+        restrictMovement = true;
+
 
     }
 

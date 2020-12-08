@@ -22,7 +22,8 @@ public class MusicPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("NextLevel", 2f);
+        if(SceneManager.GetActiveScene().buildIndex==0)
+            Invoke("NextLevel", 2f);
     }
 
     // Update is called once per frame

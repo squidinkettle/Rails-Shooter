@@ -37,7 +37,7 @@ public class CollisionHandler : MonoBehaviour
     {
         deathFX.SetActive(true);
         deathFX.GetComponent<ParticleSystem>().Play();
-        gameObject.SendMessage("PlayerMovementHandler",true);
+        gameObject.SendMessage("PlayerMovementHandler");
         Invoke("RestartLevel", levelLoadDelay);
 
     }
