@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("In m")][Range(1,40)] [SerializeField] float xClamp;
     [Tooltip("In m")] [Range(1, 40)] [SerializeField] float yClamp;
     [SerializeField] GameObject[] guns;
-
+    [SerializeField] GameObject soundFx;
 
     [Header("ScreenPosition Based")]
     [SerializeField] float pitchFactor= -5f;
@@ -54,29 +54,29 @@ public class PlayerMovement : MonoBehaviour
     {
         if (CrossPlatformInputManager.GetButton("Fire"))
         {
-            ActivateGuns();
+            GameObject fx = Instantiate(soundFx, transform.position, Quaternion.identity);
+            SetGunsActive(true);
+     
         }
         else
         {
-            DeactivateGuns();
+            SetGunsActive(false);
+         
         }
     }
 
-    private void DeactivateGuns()
+    private void SetGunsActive(bool isActive)
     {
+
         foreach (GameObject gun in guns)
         {
-            gun.SetActive(false);
+            var emissions=gun.GetComponent<ParticleSystem>().emission;
+            emissions.enabled = isActive;
         }
     }
 
-    private void ActivateGuns()
-    {
-        foreach (GameObject gun in guns)
-        {
-            gun.SetActive(true);
-        }
-    }
+   
+
 
     void PlayerMovementHandler()
     {

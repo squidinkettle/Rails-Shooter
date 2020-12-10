@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SelfDestructor : MonoBehaviour
 {
-    float destroyTime = 1f;
+    [SerializeField]float destroyTime = 1f;
     // Start is called before the first frame update
     void Start()
     {

@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
 
     ScoreBoard scoreBoard;
 
+    Rigidbody rigidbody;
+
 
 
     // Start is called before the first frame update
@@ -44,15 +46,29 @@ public class Enemy : MonoBehaviour
 
     private void KillEnemy()
     {
+        AddRigidBody();
+
         GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
         fx.transform.parent = parent;
+
+
 
         Invoke("StartDeathProcess", deathDelay);
     }
 
+    private void AddRigidBody()
+    {
+        if (rigidbody != null) { return; }
+
+        Destroy(GetComponent<Animator>());
+        rigidbody = gameObject.AddComponent<Rigidbody>();
+  
+    }
+
     private void StartDeathProcess()
     {
-
+        GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
+        fx.transform.parent = parent;
         Destroy(gameObject);
     }
 
