@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 33029633340997774}
   - component: {fileID: 23169957688585980}
   - component: {fileID: 353300317}
-  - component: {fileID: 407190058}
-  - component: {fileID: 407190057}
+  - component: {fileID: 1649101547}
+  - component: {fileID: 1649101546}
   m_Layer: 0
   m_Name: Ship_04
   m_TagString: Untagged
@@ -105,7 +105,7 @@ MonoBehaviour:
   deathFX: {fileID: 1912654185904920622, guid: 7aff84b220dc04c278f291b4805214f2, type: 3}
   deathDelay: 1
   scorePerHit: 10
---- !u!320 &407190058
+--- !u!320 &1649101547
 PlayableDirector:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,10 +121,10 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 7289808451294545821, guid: ba29edba76be64be187b4a56aa51ce85, type: 2}
-    value: {fileID: 407190057}
+    value: {fileID: 1649101546}
   m_ExposedReferences:
     m_References: []
---- !u!95 &407190057
+--- !u!95 &1649101546
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
